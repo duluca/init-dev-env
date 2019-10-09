@@ -6,10 +6,10 @@ export default class GenerateDotEnv extends Command {
   static description = 'Automatically create .env files from an example env file'
 
   static examples = [
-    `$ init-env generate-dot-env
+    `$ init-dev-env generate-dot-env
       example.env from ./src/generate-dot-env.ts!
       `,
-    `$ init-env generate-dot-env
+    `$ init-dev-env generate-dot-env
       example.env --source examples --target server from ./src/generate-dot-env.ts!
       `,
   ]

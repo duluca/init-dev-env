@@ -1,15 +1,15 @@
-# init-env
+# init-dev-env
 
 Automatically create .env files from a template file
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/init-env.svg)](https://npmjs.org/package/init-env)
-[![CircleCI](https://circleci.com/gh/duluca/init-env/tree/master.svg?style=shield)](https://circleci.com/gh/duluca/init-env/tree/master)
-[![Downloads/week](https://img.shields.io/npm/dw/init-env.svg)](https://npmjs.org/package/init-env)
-[![License](https://img.shields.io/npm/l/init-env.svg)](https://github.com/duluca/init-env/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/init-dev-env.svg)](https://npmjs.org/package/init-dev-env)
+[![CircleCI](https://circleci.com/gh/duluca/init-dev-env/tree/master.svg?style=shield)](https://circleci.com/gh/duluca/init-dev-env/tree/master)
+[![Downloads/week](https://img.shields.io/npm/dw/init-dev-env.svg)](https://npmjs.org/package/init-dev-env)
+[![License](https://img.shields.io/npm/l/init-dev-env.svg)](https://github.com/duluca/init-dev-env/blob/master/package.json)
 
 <!-- toc -->
-* [init-env](#init-env)
+* [init-dev-env](#init-dev-env)
 * [Usage](#usage)
 * [Commands](#commands)
 <!-- tocstop -->
@@ -18,14 +18,14 @@ Automatically create .env files from a template file
 
 <!-- usage -->
 ```sh-session
-$ npm install -g init-env
-$ init-env COMMAND
+$ npm install -g init-dev-env
+$ init-dev-env COMMAND
 running command...
-$ init-env (-v|--version|version)
-init-env/1.0.0 darwin-x64 node-v10.16.3
-$ init-env --help [COMMAND]
+$ init-dev-env (-v|--version|version)
+init-dev-env/1.0.0 darwin-x64 node-v10.16.3
+$ init-dev-env --help [COMMAND]
 USAGE
-  $ init-env COMMAND
+  $ init-dev-env COMMAND
 ...
 ```
 <!-- usagestop -->
@@ -33,16 +33,16 @@ USAGE
 # Commands
 
 <!-- commands -->
-* [`init-env generate-dot-env FILE`](#init-env-generate-dot-env-file)
-* [`init-env help [COMMAND]`](#init-env-help-command)
+* [`init-dev-env generate-dot-env FILE`](#init-dev-env-generate-dot-env-file)
+* [`init-dev-env help [COMMAND]`](#init-dev-env-help-command)
 
-## `init-env generate-dot-env FILE`
+## `init-dev-env generate-dot-env FILE`
 
 Automatically create .env files from an example env file
 
 ```
 USAGE
-  $ init-env generate-dot-env FILE
+  $ init-dev-env generate-dot-env FILE
 
 ARGUMENTS
   FILE  name of example .env file
@@ -54,22 +54,22 @@ OPTIONS
   -t, --target=target  target path to create .env file
 
 EXAMPLES
-  $ init-env generate-dot-env
+  $ init-dev-env generate-dot-env
          example.env from ./src/generate-dot-env.ts!
       
-  $ init-env generate-dot-env
+  $ init-dev-env generate-dot-env
          example.env --source examples --target server from ./src/generate-dot-env.ts!
 ```
 
-_See code: [src/commands/generate-dot-env.ts](https://github.com/duluca/init-env/blob/v1.0.0/src/commands/generate-dot-env.ts)_
+_See code: [src/commands/generate-dot-env.ts](https://github.com/duluca/init-dev-env/blob/v1.0.0/src/commands/generate-dot-env.ts)_
 
-## `init-env help [COMMAND]`
+## `init-dev-env help [COMMAND]`
 
-display help for init-env
+display help for init-dev-env
 
 ```
 USAGE
-  $ init-env help [COMMAND]
+  $ init-dev-env help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for

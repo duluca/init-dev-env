@@ -1,12 +1,12 @@
 {
-  "name": "init-env",
+  "name": "init-dev-env",
   "description": "Automatically create .env files from a template file",
   "version": "1.0.0",
   "author": "Doguhan Uluca @duluca",
   "bin": {
-    "init-env": "./bin/run"
+    "init-dev-env": "./bin/run"
   },
-  "bugs": "https://github.com/duluca/init-env/issues",
+  "bugs": "https://github.com/duluca/init-dev-env/issues",
   "dependencies": {
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.13.3",
@@ -49,7 +49,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/duluca/init-env",
+  "homepage": "https://github.com/duluca/init-dev-env",
   "keywords": [
     "oclif"
   ],
@@ -57,13 +57,13 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "init-env",
+    "bin": "init-dev-env",
     "plugins": [
       "@oclif/plugin-help",
       "@oclif/plugin-warn-if-update-available"
     ]
   },
-  "repository": "duluca/init-env",
+  "repository": "duluca/init-dev-env",
   "scripts": {
     "standardize": "import-sort --write \"**/*.ts\" && prettier --write \"**/*.ts\" && js-beautify --editorconfig \"src/**/*.html\"",
     "standardize:ci": "import-sort -l \"**/*.ts\" && prettier --check \"**/*.ts\"",

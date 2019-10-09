@@ -1,3 +1,4 @@
 {
-  "extends": "@oclif/tslint"
+  "extends": "@oclif/tslint",
+  "rules": { "object-curly-spacing": [true], "ordered-imports": [false], "space-before-function-paren": [false]}
 }

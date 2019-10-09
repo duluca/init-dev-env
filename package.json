@@ -11,6 +11,8 @@
     "@oclif/command": "^1.5.19",
     "@oclif/config": "^1.13.3",
     "@oclif/plugin-help": "^2.2.1",
+    "@oclif/plugin-warn-if-update-available": "^1.7.0",
+    "request": "^2.88.0",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
@@ -19,11 +21,19 @@
     "@oclif/tslint": "^3.1.1",
     "@types/chai": "^4.2.3",
     "@types/mocha": "^5.2.7",
+    "@types/mock-fs": "^3.6.30",
     "@types/node": "^10.14.21",
+    "@types/request": "^2.48.3",
     "chai": "^4.2.0",
     "globby": "^10.0.1",
+    "import-sort": "^6.0.0",
+    "import-sort-cli": "^6.0.0",
+    "import-sort-parser-typescript": "^6.0.0",
+    "import-sort-style-module": "^6.0.0",
+    "js-beautify": "^1.10.2",
     "mocha": "^5.2.0",
-    "nyc": "^13.3.0",
+    "mock-fs": "^4.10.1",
+    "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "prettier-tslint": "^0.4.2",
     "ts-node": "^8.4.1",
@@ -49,11 +59,14 @@
     "commands": "./lib/commands",
     "bin": "init-env",
     "plugins": [
-      "@oclif/plugin-help"
+      "@oclif/plugin-help",
+      "@oclif/plugin-warn-if-update-available"
     ]
   },
   "repository": "duluca/init-env",
   "scripts": {
+    "standardize": "import-sort --write \"**/*.ts\" && prettier --write \"**/*.ts\" && js-beautify --editorconfig \"src/**/*.html\"",
+    "standardize:ci": "import-sort -l \"**/*.ts\" && prettier --check \"**/*.ts\"",
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "tslint -p test -t stylish",
     "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",

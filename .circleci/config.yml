@@ -1,4 +1,3 @@
----
 version: 2
 jobs:
   node-latest: &test
@@ -43,7 +42,7 @@ jobs:
 
 workflows:
   version: 2
-  "init-dev-env":
+  'init-dev-env':
     jobs:
       - node-latest
       - node-12

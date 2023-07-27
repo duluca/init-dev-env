@@ -3,7 +3,7 @@
 
   "editor.tabSize": 2,
   "editor.rulers": [90],
-  "editor.autoIndent": true,
+  "editor.autoIndent": "full",
   "editor.cursorBlinking": "solid",
   "editor.formatOnType": false,
   "editor.formatOnPaste": true,
@@ -13,15 +13,11 @@
     "source.organizeImports": false
   },
 
-  "explorer.openEditors.visible": 0,
-
   "files.trimTrailingWhitespace": true,
   "files.autoSave": "onFocusChange",
 
   "git.confirmSync": false,
   "git.enableSmartCommit": true,
-
-  "npm.enableScriptExplorer": true,
 
   "typescript.tsdk": "node_modules/typescript/lib",
 
@@ -30,16 +26,6 @@
   "auto-close-tag.SublimeText3Mode": true,
   "html.autoClosingTags": false,
 
-  "prettier.printWidth": 90,
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "es5",
-  "prettier.disableLanguages": ["html"],
-
-  "beautify.language": {
-    "html": ["html"]
-  },
-
   "files.exclude": {
     "server/**/*.js": {
       "when": "$(basename).ts"
@@ -47,6 +33,5 @@
     "server/**/*.js.map": {
       "when": "$(basename)"
     }
-  },
-
+  }
 }

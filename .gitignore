@@ -34,7 +34,6 @@
 .yarn-integrity
 /.nyc_output
 /dist
-/lib
 /tmp
 /yarn.lock
 bower_components
@@ -50,3 +49,6 @@ pids
 typings/
 yarn-debug.log*
 yarn-error.log*
+
+test_results
+.env.test

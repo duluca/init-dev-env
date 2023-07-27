@@ -1,55 +1,75 @@
-version: 2
+version: 2.1
 jobs:
-  node-latest: &test
+  build:
     docker:
-      - image: node:latest
-    working_directory: ~/cli
+      - image: cimg/node:current
+    working_directory: ~/repo
     steps:
       - checkout
-      - restore_cache: &restore_cache
-          keys:
-            - v1-npm-{{checksum ".circleci/config.yml"}}-{{checksum "package-lock.json"}}
-            - v1-npm-{{checksum ".circleci/config.yml"}}
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: Install dependencies
-          command: yarn
-      - run: ./bin/run --version
-      - run: ./bin/run --help
-      - run:
-          name: Testing
-          command: npm test
-  node-12:
-    <<: *test
-    docker:
-      - image: node:12
-  node-10:
-    <<: *test
-    docker:
-      - image: node:10
-  cache:
-    <<: *test
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: yarn
+          command: npm ci
       - save_cache:
-          key: v1-npm-{{checksum ".circleci/config.yml"}}-{{checksum "package-lock.json"}}
+          key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
-            - ~/cli/node_modules
-            - ~/.npm
-            - /usr/local/lib/node_modules
-
+            - ./node_modules
+      - run:
+          name: Ensure coding standards
+          command: |
+            npm run style
+            npm run lint
+      - run:
+          name: Run tests
+          command: |
+            mkdir -p ~/repo/test_results
+            npm run test:ci
+      - store_test_results:
+          path: ~/repo/test_results
+      - run: npm pack
+      - run:
+          command: |
+            mkdir -p /tmp/circle-artifacts
+            cp *.tgz /tmp/circle-artifacts
+      - store_artifacts:
+          path: /tmp/circle-artifacts
+      - run:
+          name: Move compiled app to workspace
+          command: |
+            set -exu
+            mkdir -p /tmp/workspace/pkg
+            mv *.tgz /tmp/workspace/pkg/
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - pkg
+  deploy:
+    docker:
+      - image: cimg/node:current
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - checkout
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish $(echo /tmp/workspace/pkg/*.tgz)
 workflows:
-  version: 2
-  'init-dev-env':
+  build-and-deploy:
     jobs:
-      - node-latest
-      - node-12
-      - node-10
-      - cache:
+      - build
+      - hold:
+          type: approval
+          requires:
+            - build
           filters:
-            tags:
-              only: /^v.*/
             branches:
-              ignore: /.*/
+              only: main
+      - deploy:
+          context: npm
+          requires:
+            - hold

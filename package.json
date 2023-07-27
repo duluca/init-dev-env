@@ -1,83 +1,44 @@
 {
   "name": "init-dev-env",
   "description": "Automatically create .env files from a template file",
-  "version": "1.0.0",
-  "author": "Doguhan Uluca @duluca",
+  "version": "2.0.0",
+  "type": "module",
+  "author": "Doguhan Uluca <duluca@gmail.com> (https://expertlysimple.io)",
+  "license": "MIT",
+  "keywords": [
+    "dotenv",
+    ".env",
+    "environment",
+    "variables"
+  ],
+  "main": "index.js",
   "bin": {
-    "init-dev-env": "./bin/run"
+    "init-dev-env": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duluca/init-dev-env.git"
   },
   "bugs": "https://github.com/duluca/init-dev-env/issues",
+  "homepage": "https://github.com/duluca/init-dev-env",
+  "scripts": {
+    "style": "prettier --check \"lib/**/*.js\"",
+    "style:fix": "npm run style -- --write",
+    "lint": "eslint \"{lib,tests}/**/*.js\"",
+    "lint:fix": "npm run lint -- --fix",
+    "start": "node index.js",
+    "test": "node --test",
+    "test:ci": "node --test | tap-xunit > ./test_results/results.xml"
+  },
   "dependencies": {
-    "@oclif/command": "^1.5.19",
-    "@oclif/config": "^1.13.3",
-    "@oclif/plugin-help": "^2.2.1",
-    "@oclif/plugin-warn-if-update-available": "^1.7.0",
-    "request": "^2.88.0",
-    "tslib": "^1.10.0"
+    "chalk": "^5.3.0",
+    "commander": "^11.0.0",
+    "ora": "^6.3.1"
   },
   "devDependencies": {
-    "@oclif/dev-cli": "^1.22.2",
-    "@oclif/test": "^1.2.5",
-    "@oclif/tslint": "^3.1.1",
-    "@types/chai": "^4.2.3",
-    "@types/mocha": "^5.2.7",
-    "@types/mock-fs": "^3.6.30",
-    "@types/node": "^10.14.21",
-    "@types/request": "^2.48.3",
-    "chai": "^4.2.0",
-    "globby": "^10.0.1",
-    "import-sort": "^6.0.0",
-    "import-sort-cli": "^6.0.0",
-    "import-sort-parser-typescript": "^6.0.0",
-    "import-sort-style-module": "^6.0.0",
-    "js-beautify": "^1.10.2",
-    "mocha": "^5.2.0",
-    "mock-fs": "^4.10.1",
-    "nyc": "^14.1.1",
-    "prettier": "^1.18.2",
-    "prettier-tslint": "^0.4.2",
-    "ts-node": "^8.4.1",
-    "tslint": "^5.20.0",
-    "typescript": "^3.6.3"
-  },
-  "engines": {
-    "node": ">=8.0.0"
-  },
-  "files": [
-    "/bin",
-    "/lib",
-    "/npm-shrinkwrap.json",
-    "/oclif.manifest.json"
-  ],
-  "homepage": "https://github.com/duluca/init-dev-env",
-  "keywords": [
-    "oclif"
-  ],
-  "license": "MIT",
-  "main": "lib/index.js",
-  "oclif": {
-    "commands": "./lib/commands",
-    "bin": "init-dev-env",
-    "plugins": [
-      "@oclif/plugin-help",
-      "@oclif/plugin-warn-if-update-available"
-    ]
-  },
-  "repository": "duluca/init-dev-env",
-  "scripts": {
-    "standardize": "import-sort --write \"**/*.ts\" && prettier --write \"**/*.ts\" && js-beautify --editorconfig \"src/**/*.html\"",
-    "standardize:ci": "import-sort -l \"**/*.ts\" && prettier --check \"**/*.ts\"",
-    "postpack": "rm -f oclif.manifest.json",
-    "posttest": "tslint -p test -t stylish",
-    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
-    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
-    "version": "oclif-dev readme && git add README.md"
-  },
-  "types": "lib/index.d.ts",
-  "prettier": {
-    "printWidth": 90,
-    "semi": false,
-    "singleQuote": true,
-    "trailingComma": "es5"
+    "@eslint/js": "^8.45.0",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0",
+    "tap-xunit": "^2.4.1"
   }
 }
